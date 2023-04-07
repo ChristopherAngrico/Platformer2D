@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    public static CharacterController characterController;
     /*
         Movement
     */
+    [Header("Movement")]
     private float _input;
-    private float absInput;
+    public float absInput;
     public Animator animator;
     private Vector3 speed = new Vector3(5, 0, 0);
 
@@ -18,12 +18,12 @@ public class CharacterController : MonoBehaviour
     */
     
     [Header("JumpPhysics")]
-    [SerializeField] private bool isGrounded;
+    public bool isGrounded;
     public LayerMask groundLayer;
     public float groundLength;
     private Rigidbody2D rb;
     public float jumpForce = 15f;
-    private bool isJumping;
+    public bool isJumping;
     private Vector2 gravity;
     public float jumpMultiplier;
     public float fallMultiplier;
@@ -50,14 +50,7 @@ public class CharacterController : MonoBehaviour
         _input = Input.GetAxisRaw("Horizontal");
         transform.position += _input * speed * Time.deltaTime;
         absInput = Mathf.Abs(_input);
-        if (absInput > 0)
-        {
-            animator.SetBool("isRunning", true);
-        }
-        else
-        {
-            animator.SetBool("isRunning", false);
-        }
+        
     }
     private void Flip()
     {
@@ -85,7 +78,9 @@ public class CharacterController : MonoBehaviour
         }
         if(isJumping){
             jumpTimeCounter += Time.deltaTime;
+            print(jumpTimeCounter);
             if(jumpTimeCounter > jumpTime){
+                print("JumpTimeCounter");
                 isJumping = false;
             }
             rb.velocity += jumpMultiplier * gravity * Time.deltaTime;
@@ -95,6 +90,7 @@ public class CharacterController : MonoBehaviour
             jumpTimeCounter = 0;
             if(rb.velocity.y > 0) rb.velocity =  new Vector2(rb.velocity.x, rb.velocity.y * 0.5f); 
         }
+        // print(isJumping);
     }
 
     private void OnDrawGizmos()

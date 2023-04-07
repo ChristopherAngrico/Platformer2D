@@ -2337,6 +2337,7 @@ GameObject:
   - component: {fileID: 854356775}
   - component: {fileID: 854356778}
   - component: {fileID: 854356780}
+  - component: {fileID: 854356781}
   m_Layer: 0
   m_Name: Char
   m_TagString: Untagged
@@ -2439,6 +2440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3485d3eb527f92541b4080041a00d6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  absInput: 0
   animator: {fileID: 854356780}
   isGrounded: 0
   groundLayer:
@@ -2446,9 +2448,10 @@ MonoBehaviour:
     m_Bits: 8
   groundLength: 1.34
   jumpForce: 15
+  isJumping: 0
   jumpMultiplier: 1
   fallMultiplier: 5
-  jumpTime: 3
+  jumpTime: 1
 --- !u!50 &854356779
 Rigidbody2D:
   serializedVersion: 4
@@ -2491,6 +2494,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &854356781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854356774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c3f67aca4c11247b11bbd898a2a0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 854356778}
+  animator: {fileID: 854356780}
 --- !u!1 &1077691068
 GameObject:
   m_ObjectHideFlags: 0
